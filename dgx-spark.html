@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NVIDIA DGX Spark – LocalAI Hardware (design mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d10; --surface:#12161b; --surface-2:#171c23; --line:#252c36; --line-soft:#1b2129;
+  --ink:#e8ebf0; --muted:#9ba5b4; --faint:#8b96a6;
+  --accent:#7aa5ff; --accent-strong:#3b69d6; --accent-soft:rgba(122,165,255,.10); --accent-line:rgba(122,165,255,.35);
+  --pos:#73d0a1; --pos-bg:rgba(115,208,161,.10); --pos-line:rgba(115,208,161,.30);
+  --mix:#e3b85a; --mix-bg:rgba(227,184,90,.10); --mix-line:rgba(227,184,90,.30);
+  --neg:#f2928a; --neg-bg:rgba(242,146,138,.10); --neg-line:rgba(242,146,138,.30);
+  --radius:12px; --shadow:0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;color:var(--ink);background-color:var(--bg);
+  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:44px 44px;background-position:-1px -1px;
+  font:16px/1.55 "Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header.top{background:rgba(11,13,16,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+header.top .wrap{display:flex;align-items:center;gap:24px;height:60px}
+.logo{font-weight:700;letter-spacing:-.02em;font-size:19px;color:var(--ink)}
+.logo span{color:var(--accent)}
+.logo:hover{text-decoration:none}
+nav{display:flex;gap:20px;font-size:14px;margin-left:auto}
+nav a{color:var(--muted)} nav a:hover{color:var(--ink);text-decoration:none}
+.crumbs{font-size:13px;color:var(--muted);padding:16px 0 4px}
+.mock-note{display:inline-block;font-size:11px;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:999px;padding:2px 10px;margin-left:8px;vertical-align:middle}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.09em;font-weight:700;color:var(--muted)}
+h1,h2,h3{color:var(--ink)}
+h2{font-weight:700;font-size:22px;letter-spacing:-.02em;margin:0 0 4px}
+.lead{color:var(--muted);margin:0 0 16px;font-size:15px}
+.fine{font-size:12.5px;color:var(--muted);text-align:center}
+section{margin-top:28px}
+.btn{display:block;text-align:center;background:var(--accent-strong);color:#fff;font-weight:700;padding:14px 18px;border-radius:10px;font-size:16px;border:1px solid rgba(255,255,255,.12)}
+.btn:hover{background:#2f58bd;text-decoration:none}
+.badge{font-size:12px;font-weight:700;background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:3px 8px;color:var(--ink)}
+.tone{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap;border:1px solid transparent}
+.tone.pos{background:var(--pos-bg);color:var(--pos);border-color:var(--pos-line)}
+.tone.mix{background:var(--mix-bg);color:var(--mix);border-color:var(--mix-line)}
+.tone.neg{background:var(--neg-bg);color:var(--neg);border-color:var(--neg-line)}
+.strip{display:flex;height:12px;border-radius:999px;overflow:hidden;margin:14px 0 10px;background:var(--line);gap:2px}
+.strip i{display:block;height:100%}
+.strip .p{background:var(--pos)} .strip .m{background:var(--mix)} .strip .n{background:var(--neg)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--ink)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.type{display:inline-block;font-size:11.5px;font-weight:600;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:2px 8px;margin-top:4px}
+.flag{display:inline-block;font-size:11.5px;font-weight:600;color:var(--mix);border:1px dashed var(--mix-line);border-radius:6px;padding:2px 8px;margin-top:6px}
+.sample-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);background:var(--surface-2);border:1px dashed var(--accent-line);border-radius:6px;padding:2px 8px}
+footer{margin:40px 0 30px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer .links{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:8px}
+@media (max-width:860px){nav{display:none}}
+
+/* product page */
+.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;margin-top:8px}
+.hero h1{margin:6px 0 4px;font-size:34px;letter-spacing:-.025em;line-height:1.15}
+.sub{color:var(--muted);margin:0 0 14px}
+.labels{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.label{font-size:13px;font-weight:600;background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line);padding:5px 12px;border-radius:999px;display:inline-flex;gap:6px;align-items:center}
+.label::before{content:"✓";font-weight:700}
+.basis{font-size:12.5px;color:var(--muted);margin:0 0 18px}
+.verdict{border-left:3px solid var(--accent);background:var(--surface-2);padding:14px 18px;border-radius:0 10px 10px 0;margin-top:6px}
+.verdict p{margin:6px 0 0}
+.price-card{display:flex;flex-direction:column;gap:12px}
+.keyfacts{border:1px solid var(--line);border-radius:10px;background:var(--surface-2);padding:14px 16px;font-size:14px;color:var(--muted);display:grid;gap:4px}
+.keyfacts b{color:var(--ink);font-weight:600}
+.price{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.price small{display:block;font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0;margin-top:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pc h3{margin:0 0 10px;font-size:16px}
+.pc ul{list-style:none;margin:0;padding:0}
+.pc li{padding:10px 0;border-top:1px solid var(--line-soft)}
+.pc li:first-child{border-top:0}
+.pc .ico{font-weight:700;margin-right:8px}
+.pros .ico{color:var(--pos)} .cons .ico{color:var(--mix)}
+.src{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+.src b{color:var(--ink);font-weight:600}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.spec{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--surface-2)}
+.spec .k{font-size:12.5px;color:var(--muted);font-weight:600}
+.spec .v{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-top:2px}
+.spec .n{font-size:12px;color:var(--muted)}
+.meth{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+th,td{text-align:left;padding:10px 8px;border-top:1px solid var(--line-soft);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border-top:0}
+td.num{font-weight:700;white-space:nowrap}
+td.by{color:var(--muted);font-size:13px}
+.sources{display:grid;gap:12px}
+.source{display:grid;grid-template-columns:210px 1fr auto;gap:16px;align-items:start;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2)}
+.source .name{font-weight:700}
+.source .art{font-size:12px;color:var(--faint);display:block;margin-top:6px;line-height:1.35}
+.quote{margin:0 0 6px;font-size:15px}
+.quote::before{content:"“"} .quote::after{content:"”"}
+.gist{margin:0;font-size:13.5px;color:var(--muted)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filters button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:5px 14px;cursor:pointer;color:var(--muted)}
+.filters button.on{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-line)}
+.cmp{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.cmp a.c{display:block;border:1px solid var(--line);border-radius:10px;padding:18px;background:var(--surface);color:var(--ink)}
+.cmp a.c:hover{border-color:var(--accent-line);text-decoration:none}
+.cmp .t{font-weight:700;font-size:17px}
+.cmp .s{font-size:14px;color:var(--muted);margin-top:4px}
+.cmp .go{color:var(--accent);font-weight:600;font-size:14px;margin-top:8px;display:block}
+@media (max-width:860px){
+  .hero,.grid2,.cmp{grid-template-columns:1fr}
+  .specs{grid-template-columns:1fr 1fr}
+  .source{grid-template-columns:1fr}
+  .hero h1{font-size:28px}
+}
+@media (max-width:480px){ .specs{grid-template-columns:1fr} }
+
+.fams{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+.fam{border:1px solid var(--line);border-radius:10px;background:var(--surface-2);overflow:hidden;align-self:start}
+.fam h3{margin:0;padding:14px 16px 6px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.mi{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-top:1px solid var(--line-soft)}
+.mi.top{border-top:0;padding-top:6px;padding-bottom:14px}
+.mi .mn{font-weight:600;font-size:16px}
+.mi.top .mn{font-size:17px}
+.ok{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--pos);background:var(--pos-bg);border:1px solid var(--pos-line);border-radius:999px;padding:2px 9px;white-space:nowrap}
+details.more{border-top:1px solid var(--line-soft)}
+details.more summary{cursor:pointer;padding:11px 16px;font-size:13.5px;font-weight:600;color:var(--accent);list-style:none}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";display:inline-block;width:16px;font-weight:700}
+details.more[open] summary::before{content:"\2212"}
+details.more[open] summary{border-bottom:1px solid var(--line-soft)}
+@media (max-width:860px){.fams{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html">LocalAI <span>Hardware</span></a>
+    <nav>
+      <a href="#">AI PCs</a><a href="#">Workstations</a><a href="#">Mini PCs</a><a href="#">Compare</a><a href="#">How we summarize</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a> › AI PCs › Desktop AI systems › NVIDIA DGX Spark</div>
+
+  <div class="hero">
+    <div class="card">
+      <div class="eyebrow">Product page · what reviewers say</div>
+      <h1>NVIDIA DGX Spark</h1>
+      <p class="sub">Compact desktop AI computer built around the GB10 Grace Blackwell chip, for running and developing local models.</p>
+
+      <div class="labels" aria-label="Best for">
+        <span class="label">Best for fitting large models in 128 GB</span>
+        <span class="label">Best for CUDA development and fine-tuning</span>
+        <span class="label">Best for small teams and two-unit clusters</span>
+      </div>
+      <p class="basis">Labels drawn from what Tom's Hardware, The Register, STH, Level1Techs, Alex Ziskind, StorageReview and NetworkChuck say it suits.</p>
+
+      <div class="verdict">
+        <div class="eyebrow">The short version</div>
+        <p>Reviewers broadly agree the DGX Spark is a capable, quiet and compact way to hold large models locally: the 128 GB of unified memory and NVIDIA's mature CUDA software are the most-praised strengths. The recurring caveats are price and memory bandwidth. Several sources find its token generation roughly on par with cheaper Strix Halo mini PCs and well behind high-end GPUs, so it suits developers and small teams who value capacity and the CUDA ecosystem over raw generation speed.</p>
+      </div>
+
+      <div style="margin-top:20px">
+        <div class="eyebrow">Tone across sources</div>
+        <div class="strip" role="img" aria-label="9 positive, 4 mixed, 1 negative of 14 source cards">
+          <i class="p" style="width:64.29%"></i><i class="m" style="width:28.57%"></i><i class="n" style="width:7.14%"></i>
+        </div>
+        <div class="legend">
+          <span><span class="dot" style="background:var(--pos)"></span><b>9</b> Positive</span>
+          <span><span class="dot" style="background:var(--mix)"></span><b>4</b> Mixed</span>
+          <span><span class="dot" style="background:var(--neg)"></span><b>1</b> Negative</span>
+        </div>
+        <div class="fine" style="text-align:left;margin-top:6px">Counts of the 14 source cards below (The Register and Alex Ziskind have two cards each). 7 cards carry a flag for early-access, sponsored or second-hand context. This is a count, not a score.</div>
+      </div>
+    </div>
+
+    <aside class="card price-card">
+      <div class="keyfacts">
+        <span><b>128 GB</b> coherent unified memory</span>
+        <span><b>GB10</b> Grace Blackwell superchip</span>
+        <span><b>150 × 150 × 50.5 mm</b> desktop chassis</span>
+        <span style="font-size:12px">Per NVIDIA marketplace listing</span>
+      </div>
+      <div class="eyebrow">Price</div>
+      <div class="price">$6,950<small>128 GB / 4 TB Founders Edition · NVIDIA marketplace</small></div>
+      <a class="btn" href="https://marketplace.nvidia.com/en-us/enterprise/personal-ai-supercomputers/dgx-spark/" rel="noopener">Buy from NVIDIA</a>
+      <div class="fine">We may earn a commission if you buy through this link. <a href="#">Affiliate transparency</a></div>
+      <div class="fine">Prices quoted in reviews below are the prices when each review was written.</div>
+    </aside>
+  </div>
+
+  <section>
+    <div class="grid2 pc">
+      <div class="card pros">
+        <h2>What reviewers praise</h2>
+        <p class="lead">Pros extracted from reviews, with who said it.</p>
+        <ul>
+          <li><span class="ico">+</span>128 GB of unified memory runs large models that consumer GPUs can't fit
+            <span class="src">Mentioned by <b>Tom's Hardware</b>, <b>The Register</b>, <b>ServeTheHome</b>, <b>LMSYS</b></span></li>
+          <li><span class="ico">+</span>Mature CUDA stack, polished software and documentation, little setup
+            <span class="src">Mentioned by <b>Tom's Hardware</b>, <b>The Register</b>, <b>Level1Techs</b>, <b>Alex Ziskind</b>, <b>Simon Willison</b> (documentation improved quickly)</span></li>
+          <li><span class="ico">+</span>Fast prompt processing: GPU about 2–3× quicker to first token than a Strix Halo box
+            <span class="src">Mentioned by <b>The Register</b>, <b>Digital Spaceport</b></span></li>
+          <li><span class="ico">+</span>Strong batched and concurrent throughput
+            <span class="src">Mentioned by <b>StorageReview</b>, <b>LMSYS</b>, <b>Alex Ziskind</b></span></li>
+          <li><span class="ico">+</span>Quiet, compact, modest power draw for its class
+            <span class="src">Mentioned by <b>ServeTheHome</b>, <b>HotHardware</b>, <b>StorageReview</b>, <b>LMSYS</b></span></li>
+          <li><span class="ico">+</span>Built-in ConnectX-7 networking for linking two units
+            <span class="src">Mentioned by <b>Tom's Hardware</b>, <b>ServeTheHome</b>, <b>Level1Techs</b>, <b>Tim Carambat</b>, <b>NetworkChuck</b></span></li>
+          <li><span class="ico">+</span>Fine-tuning and development locally instead of renting cloud GPUs
+            <span class="src">Mentioned by <b>Level1Techs</b>, <b>NetworkChuck</b>, <b>Tim Carambat</b>, <b>StorageReview</b></span></li>
+        </ul>
+      </div>
+      <div class="card cons">
+        <h2>Flaws but not dealbreakers</h2>
+        <p class="lead">Cons extracted from reviews, with who said it.</p>
+        <ul>
+          <li><span class="ico">–</span>Price is the most-cited drawback
+            <span class="src">Mentioned by <b>Tom's Hardware</b>, <b>The Register</b> (both articles), <b>HotHardware</b>, <b>NetworkChuck</b>, <b>Digital Spaceport</b></span></li>
+          <li><span class="ico">–</span>273 GB/s memory bandwidth limits token generation, especially for dense models
+            <span class="src">Mentioned by <b>ServeTheHome</b>, <b>LMSYS</b>, <b>The Register</b>, <b>Digital Spaceport</b></span></li>
+          <li><span class="ico">–</span>Generation speed about the same as a Strix Halo mini PC at two-thirds to half the price
+            <span class="src">Mentioned by <b>The Register</b> (Strix Halo comparison)</span></li>
+          <li><span class="ico">–</span>Slower at generation than discrete GPUs and multi-GPU rigs
+            <span class="src">Mentioned by <b>LMSYS</b> (RTX 5090 and RTX Pro 6000), <b>NetworkChuck</b> (dual RTX 4090), <b>Digital Spaceport</b> (quad RTX 3090)</span></li>
+          <li><span class="ico">–</span>Software ecosystem still maturing on ARM64 and CUDA
+            <span class="src">Mentioned by <b>Simon Willison</b>, <b>ServeTheHome</b></span></li>
+          <li><span class="ico">–</span>Network throughput below the advertised 200 Gb/s in one test; some would trade the fast NICs for a lower price
+            <span class="src">Mentioned by <b>Level1Techs</b>, <b>The Register</b></span></li>
+          <li><span class="ico">–</span>Not a general-purpose PC: runs NVIDIA's Linux software, no Windows (yet)
+            <span class="src">Mentioned by <b>Tom's Hardware</b>, <b>The Register</b>, <b>Tim Carambat</b></span></li>
+          <li><span class="ico">–</span>Warm, audible fans under sustained heavy load
+            <span class="src">Mentioned by <b>NetworkChuck</b> (others describe it as quiet in lighter use)</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Local AI facts</h2>
+    <div class="meth">
+      <span class="badge">Methodology v0.1</span>
+      <span class="lead" style="margin:0">Figures as reported by the sources, shown as min–max ranges with the source behind each end. Not a score. <a href="#">How we summarize reviews</a></span>
+    </div>
+    <div class="specs">
+      <div class="spec"><div class="k">Memory</div><div class="v">112–128 GB</div><div class="n">Min: 112 GB available to the OS (Simon Willison, on-device report). Max: 128 GB unified (Tom's Hardware, LMSYS).</div></div>
+      <div class="spec"><div class="k">Memory bandwidth</div><div class="v">273 GB/s</div><div class="n">Stated by ServeTheHome, LMSYS and The Register. Digital Spaceport says "about 276" in the video.</div></div>
+      <div class="spec"><div class="k">Power draw</div><div class="v">60–200 W</div><div class="n">Min: 60 W, low end of the 60–90 W ServeTheHome saw in LLM inference. Max: just under 200 W with CPU and GPU loaded (ServeTheHome). Included adapter: 240 W.</div></div>
+      <div class="spec"><div class="k">Noise</div><div class="v">Under 40 dBA</div><div class="n">ServeTheHome, outside stress tests. "Quiet" per HotHardware and StorageReview. NetworkChuck heard fans under heavy load. Other dB figures: not reported.</div></div>
+      <div class="spec"><div class="k">Price per GB of memory</div><div class="v">$54.30 / GB</div><div class="n">Computed: $6,950 ÷ 128 GB for the single configuration shown.</div></div>
+      <div class="spec"><div class="k">Form factor</div><div class="v">Mini desktop</div><div class="n">150 × 150 × 50.5 mm (NVIDIA listing); about 1.2 kg (Tim Carambat).</div></div>
+    </div>
+    <h3 style="margin:22px 0 0;font-size:16px">Tokens per second (generation, one user), min–max across sources</h3>
+    <p class="lead" style="margin:4px 0 0;font-size:13.5px">Engines, quantization and software versions differ between sources, so ranges are wide.</p>
+    <table>
+      <thead><tr><th>Model class</th><th>Tokens/sec</th><th>Lowest reported by</th><th>Highest reported by</th></tr></thead>
+      <tbody>
+        <tr><td>~8B (Llama 3.1 8B)</td><td class="num">20.5–38.0</td><td class="by">LMSYS (SGLang, FP8)</td><td class="by">Ollama blog (q4_K_M)</td></tr>
+        <tr><td>~20B (gpt-oss-20B)</td><td class="num">39.7–59</td><td class="by">StorageReview (vLLM, NVFP4)</td><td class="by">Simon Willison, citing llama.cpp's Georgi Gerganov (approx. 59)</td></tr>
+        <tr><td>~30B mixture-of-experts</td><td class="num">46.5–65</td><td class="by">StorageReview (Qwen3-Coder-30B-A3B, FP8)</td><td class="by">Matthew Berman (Qwen3.5-35B-A3B; NVIDIA-sponsored video)</td></tr>
+        <tr><td>~30B dense (Gemma 3 27B, Qwen3 32B)</td><td class="num">3.5–10.8</td><td class="by">Digital Spaceport (Qwen3 32B Q8, from LMSYS' sheet)</td><td class="by">Ollama blog (Gemma 3 27B q4_K_M)</td></tr>
+        <tr><td>~70B dense (Llama 3.1 70B)</td><td class="num">2.7–4.4</td><td class="by">LMSYS (FP8)</td><td class="by">Ollama blog (q4_K_M)</td></tr>
+        <tr><td>~120B mixture-of-experts (gpt-oss-120B)</td><td class="num">14.5–41.1</td><td class="by">ServeTheHome (Ollama, out of the box)</td><td class="by">Ollama blog (MXFP4)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card" id="models">
+    <h2>Compatible models</h2>
+    <p class="lead">Popular local AI models, by family.</p>
+    <div class="fams"><div class="fam"><h3>Qwen</h3><div class="mi top"><span class="mn">Qwen3.8 27B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div></div><div class="fam"><h3>Gemma 4</h3><div class="mi top"><span class="mn">Gemma 4 26B-A4B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div><details class="more"><summary>Show 2 more</summary><div class="mi"><span class="mn">Gemma 4 31B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div><div class="mi"><span class="mn">Gemma 4 12B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div></details></div><div class="fam"><h3>gpt-oss</h3><div class="mi top"><span class="mn">gpt-oss 120B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div><details class="more"><summary>Show 1 more</summary><div class="mi"><span class="mn">gpt-oss 20B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div></details></div></div>
+  </section>
+
+  <section class="card">
+    <h2>What each source says</h2>
+    <p class="lead">Every judgment is labeled by its source, so you can form your own view.</p>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">All sources (14)</button>
+      <button data-f="pos">Positive (9)</button>
+      <button data-f="mix">Mixed (4)</button>
+      <button data-f="neg">Negative (1)</button>
+    </div>
+    <div class="sources" id="sources">
+
+      <div class="source" data-t="pos"><div><div class="name">Tom's Hardware</div><span class="type">Review site</span><span class="art">Review: "…a fast and fun AI toolbox that beats out AMD's Ryzen AI Max+ 395"</span></div>
+        <div><p class="quote">Nvidia's Grace Blackwell mini-PC is a winner, but you need to be all in on AI to justify one.</p><p class="gist">Praises the efficient GB10, 128 GB of RAM, the CUDA ecosystem and clustering; calls it pricey if you won't use its features.</p></div><span class="tone pos">Positive</span></div>
+
+      <div class="source" data-t="pos"><div><div class="name">ServeTheHome</div><span class="type">Review site</span><span class="flag">⚑ NVIDIA-supplied pre-production unit</span><span class="art">Review: "The GB10 Machine is so Freaking Cool"</span></div>
+        <div><p class="quote">It is, however, impossible for me to get past the feeling that this is a game-changer.</p><p class="gist">Likes the 128 GB memory, 200GbE networking and a quiet chassis, while saying it is not "the most mature NVIDIA platform" in its pre-release state.</p></div><span class="tone pos">Positive</span></div>
+
+      <div class="source" data-t="mix"><div><div class="name">The Register</div><span class="type">Review site</span><span class="art">First look: "Nvidia's tiniest supercomputer, tackles large models at solid speeds"</span></div>
+        <div><p class="quote">…a system that may not be the fastest at any one thing, but can run them all.</p><p class="gist">Capacity and CUDA compatibility are strengths; bandwidth limits generation speed, and many buyers "would have happily forgone the high-speed networking in favor of a lower MSRP".</p></div><span class="tone mix">Mixed</span></div>
+
+      <div class="source" data-t="mix"><div><div class="name">The Register</div><span class="type">Review site</span><span class="art">Comparison: "Tested: AMD's Strix Halo vs Nvidia's DGX Spark"</span></div>
+        <div><p class="quote">For between two-thirds and half the price, you could get a Strix Halo box that churns out tokens just as quickly.</p><p class="gist">The Spark's GPU is roughly 2–3× faster to first token and better for image and video work, so it is "probably the better choice, assuming you can stomach the asking price".</p></div><span class="tone mix">Mixed</span></div>
+
+      <div class="source" data-t="pos"><div><div class="name">HotHardware</div><span class="type">Review site</span><span class="art">Review: "A GB10-Infused Mini AI Development Powerhouse"</span></div>
+        <div><p class="quote">At 4 grand, the DGX Spark is not an enthusiast's toy, but rather a real AI machine for serious business.</p><p class="gist">Finds it quiet and cool under load and gives it its "HotHardware Recommended" award; its Mac Studio comparison is, by its own account, not a perfect one.</p></div><span class="tone pos">Positive</span></div>
+
+      <div class="source" data-t="pos"><div><div class="name">StorageReview</div><span class="type">Review site</span><span class="art">Review: "The AI Appliance Bringing Datacenter Capabilities to Desktops"</span></div>
+        <div><p class="quote">NVIDIA has effectively collapsed the barriers that historically segregated datacenter-class AI capabilities from individual researchers and small development teams.</p><p class="gist">Describes a quiet, compact, power-efficient appliance with strong batched throughput.</p></div><span class="tone pos">Positive</span></div>
+
+      <div class="source" data-t="pos"><div><div class="name">LMSYS Org (SGLang)</div><span class="type">AI site</span><span class="flag">⚑ NVIDIA early-access program</span><span class="art">Blog: "NVIDIA DGX Spark In-Depth Review: A New Standard for Local AI Inference"</span></div>
+        <div><p class="quote">It's a gorgeous, well-engineered mini supercomputer that trades raw power for accessibility, efficiency, and elegance, and in those areas, it absolutely shines.</p><p class="gist">Highlights 128 GB memory and batching efficiency; names memory bandwidth as "the only downside", with decode roughly 4× slower than an RTX Pro 6000 on a 20B model.</p></div><span class="tone pos">Positive</span></div>
+
+      <div class="source" data-t="mix"><div><div class="name">Simon Willison</div><span class="type">AI site</span><span class="flag">⚑ NVIDIA-supplied preview unit</span><span class="art">Blog: "NVIDIA DGX Spark: great hardware, early days for the ecosystem"</span></div>
+        <div><p class="quote">It's a bit too early for me to provide a confident recommendation concerning this machine.</p><p class="gist">Calls the hardware great but the ecosystem immature, with CUDA-on-ARM64 friction, though NVIDIA's documentation improved fast.</p></div><span class="tone mix">Mixed</span></div>
+
+      <div class="source" data-t="pos"><div><div class="name">Level1Techs</div><span class="type">YouTube</span><span class="art">Video: "Deep Dive into Nvidia's DGX Spark GB10"</span></div>
+        <div><p class="quote">Spark's charm is less its peak performance and more an AI lab in a box.</p><p class="gist">Positive on the turnkey dev environment and the path to bigger systems ("cheaper than a forgotten cloud instance"); measured network speeds below 200 Gb/s and notes a 5070 would be faster but runs out of VRAM sooner.</p></div><span class="tone pos">Positive</span></div>
+
+      <div class="source" data-t="pos"><div><div class="name">Alex Ziskind</div><span class="type">YouTube</span><span class="flag">⚑ Sponsored by Micro Center</span><span class="art">Video: "DGX Spark... First Mini PC That Feels Like a Data Center"</span></div>
+        <div><p class="quote">I don't think it's ever been easier to just set up a dev box with AI workflows and get going with it.</p><p class="gist">Praises day-one software support (LM Studio, Ollama, ComfyUI) and FP4 speed; says Strix Halo software is "still catching up".</p></div><span class="tone pos">Positive</span></div>
+
+      <div class="source" data-t="pos"><div><div class="name">Alex Ziskind</div><span class="type">YouTube</span><span class="art">Video: "I Thought DGX Spark Was Slower… Until I Changed ONE Thing"</span></div>
+        <div><p class="quote">Single-user benchmarks will mislead you.</p><p class="gist">Finds throughput climbs strongly with concurrent requests and NVFP4, though in one configuration an M3 Ultra Mac Studio edged it out.</p></div><span class="tone pos">Positive</span></div>
+
+      <div class="source" data-t="mix"><div><div class="name">NetworkChuck</div><span class="type">YouTube</span><span class="flag">⚑ NVIDIA-supplied unit; video sponsored by Twingate</span><span class="art">Video: "This AI Supercomputer can fit on your desk..."</span></div>
+        <div><p class="quote">For me, $4,000 for a device like this, I would want higher inference speeds for myself.</p><p class="gist">His dual-RTX-4090 server was faster at generation, but he sees the Spark as a fit for developers who fine-tune instead of renting cloud GPUs.</p></div><span class="tone mix">Mixed</span></div>
+
+      <div class="source" data-t="neg"><div><div class="name">Digital Spaceport</div><span class="type">YouTube</span><span class="flag">⚑ Did not test a Spark: uses LMSYS' published numbers</span><span class="art">Video: "DGX Spark vs Quad 3090s Local AI Benchmarks - Best Rig for $4K?"</span></div>
+        <div><p class="quote">128 GB of VRAM for five tokens a second on [Gemma 3 27B] feels kind of useless to be honest, especially for $4,000.</p><p class="gist">Negative on value: argues the roughly 273 GB/s bandwidth always limits performance next to a quad-RTX-3090 rig, while noting prefill is a strength.</p></div><span class="tone neg">Negative</span></div>
+
+      <div class="source" data-t="pos"><div><div class="name">Tim Carambat</div><span class="type">YouTube</span><span class="flag">⚑ Early-access unit</span><span class="art">Video: "I got a desktop supercomputer? | DGX Spark overview"</span></div>
+        <div><p class="quote">Personally I'm impressed. It's a lot of fun and it's just really cool to use.</p><p class="gist">After about a week and a half as a daily driver, likes it as a dedicated home-lab AI box; stresses it supplements a PC rather than replacing one.</p></div><span class="tone pos">Positive</span></div>
+
+    </div>
+    <div class="fine" style="text-align:left;margin-top:12px">Flags mark early-access, sponsored or second-hand context; flagged cards are still counted. YouTube quotes come from auto-generated captions.</div>
+  </section>
+
+  <section>
+    <h2>Compare with</h2>
+    <p class="lead">Side-by-side pages, each listing the sources behind the comparison.</p>
+    <div class="cmp">
+      <a class="c" href="#"><div class="t">NVIDIA DGX Spark vs Strix Halo mini PC</div><div class="s">Sources: The Register (Strix Halo vs Spark test), Tom's Hardware, Alex Ziskind</div><span class="go">Open comparison →</span></a>
+      <a class="c" href="#"><div class="t">NVIDIA DGX Spark vs Mac Studio</div><div class="s">Sources: HotHardware, The Register (first look), Alex Ziskind (concurrency test)</div><span class="go">Open comparison →</span></a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="links"><a href="#">How we summarize reviews</a><a href="#">Affiliate transparency</a><a href="#">Source list</a><a href="#">About</a></div>
+    <div>LocalAI Hardware summarizes what published reviews say. We don't score products. <span class="mock-note">Design mockup</span></div>
+  </footer>
+</main>
+
+<script>
+document.getElementById('filters').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  this.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+  var f=b.dataset.f;
+  document.querySelectorAll('#sources .source').forEach(function(s){s.style.display=(f==='all'||s.dataset.t===f)?'':'none'});
+});
+</script>
+</body>
+</html>
