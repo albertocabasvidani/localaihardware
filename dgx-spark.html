@@ -96,6 +96,7 @@ th,td{text-align:left;padding:10px 8px;border-top:1px solid var(--line-soft);ver
 th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border-top:0}
 td.num{font-weight:700;white-space:nowrap}
 td.by{color:var(--muted);font-size:13px}
+.sv{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}.sv li{line-height:1.5}
 .sl{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}.sl:hover{text-decoration-style:solid}
 .sources{display:grid;gap:12px}
 .source{display:grid;grid-template-columns:210px 1fr auto;gap:16px;align-items:start;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2)}
@@ -167,7 +168,12 @@ details.more[open] summary{border-bottom:1px solid var(--line-soft)}
 
       <div class="verdict">
         <div class="eyebrow">The short version</div>
-        <p>Reviewers broadly agree the DGX Spark is a capable, quiet and compact way to hold large models locally: the 128 GB of unified memory and NVIDIA's mature CUDA software are the most-praised strengths. The recurring caveats are price and memory bandwidth. Several sources find its token generation roughly on par with cheaper Strix Halo mini PCs and well behind high-end GPUs, so it suits developers and small teams who value capacity and the CUDA ecosystem over raw generation speed.</p>
+        <ul class="sv">
+          <li><b>Praised:</b> 128 GB of unified memory and NVIDIA's CUDA software. It is quiet and compact.</li>
+          <li><b>Criticized:</b> the price and the memory bandwidth.</li>
+          <li><b>Speed:</b> <a class="sl" href="https://www.theregister.com/on-prem/2025/12/25/tested-amds-strix-halo-vs-nvidias-dgx-spark/2098514" target="_blank" rel="noopener">The Register</a> found generation about as fast as a cheaper Strix Halo mini PC. It is slower than high-end GPUs.</li>
+          <li><b>Suits:</b> developers and small teams who want capacity and CUDA more than raw generation speed.</li>
+        </ul>
       </div>
 
       <div style="margin-top:20px">
