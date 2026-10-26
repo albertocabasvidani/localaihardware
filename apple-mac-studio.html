@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apple Mac Studio M5: what reviewers say — LocalAI Hardware</title>
+<meta name="description" content="What WIRED, MacStories, Tom&#x27;s Hardware, Ars Technica and others say about the Apple Mac Studio with M5 Max and M5 Ultra for local AI, each linked to its source.">
+<link rel="canonical" href="https://albertocabasvidani.github.io/localaihardware/apple-mac-studio.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="LocalAI Hardware">
+<meta property="og:title" content="Apple Mac Studio M5: what reviewers say — LocalAI Hardware">
+<meta property="og:description" content="Praise, flaws and local-AI speed figures from published reviews, each linked to its source.">
+<meta property="og:url" content="https://albertocabasvidani.github.io/localaihardware/apple-mac-studio.html">
+<meta property="og:image" content="https://albertocabasvidani.github.io/localaihardware/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d10; --surface:#12161b; --surface-2:#171c23; --line:#252c36; --line-soft:#1b2129;
+  --ink:#e8ebf0; --muted:#9ba5b4; --faint:#8b96a6;
+  --accent:#7aa5ff; --accent-strong:#3b69d6; --accent-soft:rgba(122,165,255,.10); --accent-line:rgba(122,165,255,.35);
+  --pos:#73d0a1; --pos-bg:rgba(115,208,161,.10); --pos-line:rgba(115,208,161,.30);
+  --mix:#e3b85a; --mix-bg:rgba(227,184,90,.10); --mix-line:rgba(227,184,90,.30);
+  --neg:#f2928a; --neg-bg:rgba(242,146,138,.10); --neg-line:rgba(242,146,138,.30);
+  --radius:12px; --shadow:0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;color:var(--ink);background-color:var(--bg);
+  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:44px 44px;background-position:-1px -1px;
+  font:16px/1.55 "Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header.top{background:rgba(11,13,16,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+header.top .wrap{display:flex;align-items:center;gap:24px;height:60px}
+.logo{font-weight:700;letter-spacing:-.02em;font-size:19px;color:var(--ink)}
+.logo span{color:var(--accent)}
+.logo:hover{text-decoration:none}
+nav{display:flex;gap:20px;font-size:14px;margin-left:auto}
+nav a{color:var(--muted)} nav a:hover{color:var(--ink);text-decoration:none}
+.crumbs{font-size:13px;color:var(--muted);padding:16px 0 4px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.09em;font-weight:700;color:var(--muted)}
+h1,h2,h3{color:var(--ink)}
+h2{font-weight:700;font-size:22px;letter-spacing:-.02em;margin:0 0 4px}
+.lead{color:var(--muted);margin:0 0 16px;font-size:15px}
+.fine{font-size:12.5px;color:var(--muted);text-align:center}
+section{margin-top:28px}
+.btn{display:block;text-align:center;background:var(--accent-strong);color:#fff;font-weight:700;padding:14px 18px;border-radius:10px;font-size:16px;border:1px solid rgba(255,255,255,.12)}
+.btn:hover{background:#2f58bd;text-decoration:none}
+.badge{font-size:12px;font-weight:700;background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:3px 8px;color:var(--ink)}
+.tone{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap;border:1px solid transparent}
+.tone.pos{background:var(--pos-bg);color:var(--pos);border-color:var(--pos-line)}
+.tone.mix{background:var(--mix-bg);color:var(--mix);border-color:var(--mix-line)}
+.tone.neg{background:var(--neg-bg);color:var(--neg);border-color:var(--neg-line)}
+.strip{display:flex;height:12px;border-radius:999px;overflow:hidden;margin:14px 0 10px;background:var(--line);gap:2px}
+.strip i{display:block;height:100%}
+.strip .p{background:var(--pos)} .strip .m{background:var(--mix)} .strip .n{background:var(--neg)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--ink)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.type{display:inline-block;font-size:11.5px;font-weight:600;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:2px 8px;margin-top:4px}
+.flag{display:inline-block;font-size:11.5px;font-weight:600;color:var(--mix);border:1px dashed var(--mix-line);border-radius:6px;padding:2px 8px;margin-top:6px}
+.sample-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);background:var(--surface-2);border:1px dashed var(--accent-line);border-radius:6px;padding:2px 8px}
+footer{margin:40px 0 30px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer .links{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:8px}
+@media (max-width:860px){nav{display:none}}
+
+/* product page */
+.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;margin-top:8px}
+.hero h1{margin:6px 0 4px;font-size:34px;letter-spacing:-.025em;line-height:1.15}
+.sub{color:var(--muted);margin:0 0 14px}
+.labels{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.label{font-size:13px;font-weight:600;background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line);padding:5px 12px;border-radius:999px;display:inline-flex;gap:6px;align-items:center}
+.label::before{content:"✓";font-weight:700}
+.basis{font-size:12.5px;color:var(--muted);margin:0 0 18px}
+.verdict{border-left:3px solid var(--accent);background:var(--surface-2);padding:14px 18px;border-radius:0 10px 10px 0;margin-top:6px}
+.verdict p{margin:6px 0 0}
+.price-card{display:flex;flex-direction:column;gap:12px}
+.keyfacts{border:1px solid var(--line);border-radius:10px;background:var(--surface-2);padding:14px 16px;font-size:14px;color:var(--muted);display:grid;gap:4px}
+.keyfacts b{color:var(--ink);font-weight:600}
+.price{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.price small{display:block;font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0;margin-top:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pc h3{margin:0 0 10px;font-size:16px}
+.pc ul{list-style:none;margin:0;padding:0}
+.pc li{padding:10px 0;border-top:1px solid var(--line-soft)}
+.pc li:first-child{border-top:0}
+.pc .ico{font-weight:700;margin-right:8px}
+.pros .ico{color:var(--pos)} .cons .ico{color:var(--mix)}
+.src{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+.src b{color:var(--ink);font-weight:600}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.spec{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--surface-2)}
+.spec .k{font-size:12.5px;color:var(--muted);font-weight:600}
+.spec .v{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-top:2px}
+.spec .n{font-size:12px;color:var(--muted)}
+.meth{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+th,td{text-align:left;padding:10px 8px;border-top:1px solid var(--line-soft);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border-top:0}
+td.num{font-weight:700;white-space:nowrap}
+td.by{color:var(--muted);font-size:13px}
+.sv{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}.sv li{line-height:1.5}
+.sl{color:inherit;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}.sl:hover{text-decoration-style:solid}
+.sources{display:grid;gap:12px}
+.source{display:grid;grid-template-columns:210px 1fr auto;gap:16px;align-items:start;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2)}
+.source .name{font-weight:700}
+.source .art{font-size:12px;color:var(--faint);display:block;margin-top:6px;line-height:1.35}
+.quote{margin:0 0 6px;font-size:15px}
+.quote::before{content:"“"} .quote::after{content:"”"}
+.gist{margin:0;font-size:13.5px;color:var(--muted)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filters button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:5px 14px;cursor:pointer;color:var(--muted)}
+.filters button.on{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-line)}
+@media (max-width:860px){
+  .hero,.grid2{grid-template-columns:1fr}
+  .specs{grid-template-columns:1fr 1fr}
+  .source{grid-template-columns:1fr}
+  .hero h1{font-size:28px}
+}
+@media (max-width:480px){ .specs{grid-template-columns:1fr} }
+
+.fams{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+.fam{border:1px solid var(--line);border-radius:10px;background:var(--surface-2);overflow:hidden;align-self:start}
+.fam h3{margin:0;padding:14px 16px 6px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.mi{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-top:1px solid var(--line-soft)}
+.mi.top{border-top:0;padding-top:6px;padding-bottom:14px}
+.mi .mn{font-weight:600;font-size:16px}
+.mi.top .mn{font-size:17px}
+.ok{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--pos);background:var(--pos-bg);border:1px solid var(--pos-line);border-radius:999px;padding:2px 9px;white-space:nowrap}
+details.more{border-top:1px solid var(--line-soft)}
+details.more summary{cursor:pointer;padding:11px 16px;font-size:13.5px;font-weight:600;color:var(--accent);list-style:none}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";display:inline-block;width:16px;font-weight:700}
+details.more[open] summary::before{content:"\2212"}
+details.more[open] summary{border-bottom:1px solid var(--line-soft)}
+@media (max-width:860px){.fams{grid-template-columns:1fr}}
+.mi .srcn{display:block;font-weight:400;font-size:12px;color:var(--muted);margin-top:2px}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://albertocabasvidani.github.io/localaihardware/"},{"@type":"ListItem","position":2,"name":"Apple Mac Studio","item":"https://albertocabasvidani.github.io/localaihardware/apple-mac-studio.html"}]}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="./">LocalAI <span>Hardware</span></a>
+    <nav>
+      <a href="about.html">About</a><a href="methodology.html">How we summarize</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="crumbs"><a href="./">Home</a> › Apple Mac Studio</div>
+
+  <div class="hero">
+    <div class="card">
+      <div class="eyebrow">Product page · what reviewers say</div>
+      <h1>Apple Mac Studio (M5 Max and M5 Ultra)</h1>
+      <p class="sub">Apple Mac Studio is a compact desktop with an M5 Max or M5 Ultra chip and up to 256 GB of unified memory, used by reviewers to run large local AI models and agents.</p>
+      <p class="fine" style="text-align:left">Last updated <time datetime="2026-10-26">26 Oct 2026</time>.<br>What changed: Page added.</p>
+
+      <div class="labels" aria-label="Best for">
+        <span class="label">Best for local AI agents on one quiet desk machine</span><span class="label">Best for large models with high memory bandwidth</span><span class="label">Best for pros who also edit photo and video</span>
+      </div>
+      <p class="basis">Labels drawn from what <a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a>, <a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a>, <a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a>, <a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a>, <a class="sl" href="https://www.digitalcameraworld.com/tech/computers/apple-mac-studio-m5-max-review" target="_blank" rel="noopener">Digital Camera World</a> say.</p>
+
+      <div class="verdict">
+        <div class="eyebrow">The short version</div>
+        <ul class="sv">
+          <li><b>Praised:</b> memory bandwidth and capacity for local models, a small and quiet body, and plenty of ports.</li>
+          <li><b>Criticized:</b> the price of memory and SSD upgrades, heat and fan noise under load, and GPU speed behind NVIDIA.</li>
+          <li><b>Speed:</b> <a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a> measured just over 50 tokens/sec on a 27B model with the M5 Ultra and about 31 with the M5 Max.</li>
+          <li><b>Suits:</b> people who want large models and local agents on one desktop. <a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a> calls it a "Niche product for a small audience".</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:20px">
+        <div class="eyebrow">Tone across sources</div>
+        <div class="strip" role="img" aria-label="4 positive, 1 mixed, 0 negative of 5 source cards">
+          <i class="p" style="width:80.00%"></i><i class="m" style="width:20.00%"></i>
+        </div>
+        <div class="legend">
+          <span><span class="dot" style="background:var(--pos)"></span><b>4</b> Positive</span><span><span class="dot" style="background:var(--mix)"></span><b>1</b> Mixed</span><span><span class="dot" style="background:var(--neg)"></span><b>0</b> Negative</span>
+        </div>
+        <div class="fine" style="text-align:left;margin-top:6px">Counts of the 5 source cards below. 4 cards carry a flag for supplied-unit or commissioned context. This is a count, not a score.</div>
+      </div>
+    </div>
+
+    <aside class="card price-card">
+      <div class="keyfacts">
+        <span><b>M5 Max / M5 Ultra</b> Apple silicon</span>
+        <span><b>Up to 1.2 TB/s</b> memory bandwidth (M5 Ultra)</span>
+        <span><b>197 × 197 × 95 mm</b> desktop chassis</span>
+        <span style="font-size:12px">Per <a class="sl" href="https://www.apple.com/mac-studio/specs/" target="_blank" rel="noopener">Apple specifications</a></span>
+      </div>
+      <div class="eyebrow">Price</div>
+      <div class="price">$2,499<small>M5 Max · 36 GB / 512 GB SSD · <a class="sl" href="https://www.apple.com/shop/buy-mac/mac-studio" target="_blank" rel="noopener">Apple</a>, as of 26 Oct 2026</small></div>
+      <a class="btn" href="https://www.apple.com/shop/buy-mac/mac-studio" rel="noopener">Buy from Apple</a>
+      <div class="fine">The M5 Ultra starts at <a class="sl" href="https://www.apple.com/shop/buy-mac/mac-studio" target="_blank" rel="noopener">$5,499</a> at Apple.<br>Prices quoted in reviews below are the prices when each review was written.</div>
+      <div class="fine">Sources last verified: 26 Oct 2026.</div>
+    </aside>
+  </div>
+
+  <section>
+    <div class="grid2 pc">
+      <div class="card pros">
+        <h2>What reviewers praise</h2>
+        <p class="lead">Pros extracted from reviews, with who said it.</p>
+        <ul>
+          <li><span class="ico">+</span>High memory bandwidth and capacity run large local models
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a></b> (1.2 TB/s), <b><a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a></b>, <b><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a></b>, <b><a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a></b></span></li>
+          <li><span class="ico">+</span>M5 Ultra reads prompts much faster than the M3 Ultra
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a></b> (2,887 vs 1,143 tokens/sec at 16K)</span></li>
+          <li><span class="ico">+</span>Prompt processing faster than the DGX Spark
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a></b></span></li>
+          <li><span class="ico">+</span>Small, quiet and power-efficient for its class
+            <span class="src">Mentioned by <b><a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a></b>, <b><a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a></b>, <b><a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a></b>, <b><a class="sl" href="https://www.digitalcameraworld.com/tech/computers/apple-mac-studio-m5-max-review" target="_blank" rel="noopener">Digital Camera World</a></b></span></li>
+          <li><span class="ico">+</span>Quieter and cooler than an RTX 5090 desktop under local-AI load
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a></b></span></li>
+          <li><span class="ico">+</span>Plenty of ports, including Thunderbolt 5
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a></b>, <b><a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a></b>, <b><a class="sl" href="https://www.digitalcameraworld.com/tech/computers/apple-mac-studio-m5-max-review" target="_blank" rel="noopener">Digital Camera World</a></b></span></li>
+          <li><span class="ico">+</span>Strong for photo and video work as well as AI
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.digitalcameraworld.com/tech/computers/apple-mac-studio-m5-max-review" target="_blank" rel="noopener">Digital Camera World</a></b></span></li>
+        </ul>
+      </div>
+      <div class="card cons">
+        <h2>Flaws but not dealbreakers</h2>
+        <p class="lead">Cons extracted from reviews, with who said it.</p>
+        <ul>
+          <li><span class="ico">–</span>Expensive, especially as you add memory and SSD
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a></b>, <b><a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a></b>, <b><a class="sl" href="https://www.digitalcameraworld.com/tech/computers/apple-mac-studio-m5-max-review" target="_blank" rel="noopener">Digital Camera World</a></b>, <b><a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a></b> ("cheaper AI boxes out there")</span></li>
+          <li><span class="ico">–</span>Memory and SSD can't be upgraded after purchase
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a></b></span></li>
+          <li><span class="ico">–</span>Can get hot and fans can be heard under heavy load
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a></b>, <b><a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a></b></span></li>
+          <li><span class="ico">–</span>GPU speed behind NVIDIA: an RTX 5090 reads prompts faster and writes about 25% faster
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a></b>, <b><a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a></b></span></li>
+          <li><span class="ico">–</span>Less powerful than a GeForce 5070Ti desktop card in AI benchmarks (M5 Max)
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.digitalcameraworld.com/tech/computers/apple-mac-studio-m5-max-review" target="_blank" rel="noopener">Digital Camera World</a></b></span></li>
+          <li><span class="ico">–</span>Slow for video generation: over 11 minutes for a 15-second clip
+            <span class="src">Mentioned by <b><a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a></b></span></li>
+          <li><span class="ico">–</span>A niche product for a small audience
+            <span class="src">Mentioned by <b><a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a></b></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Local AI facts</h2>
+    <div class="meth">
+      <span class="badge">Methodology v0.1</span>
+      <span class="lead" style="margin:0">Figures as reported by the sources, shown as min–max ranges with the source behind each end. Not a score. <a href="methodology.html">How we summarize reviews</a></span>
+    </div>
+    <div class="specs">
+      <div class="spec"><div class="k">Memory</div><div class="v">36–256 GB</div><div class="n">Options on Apple's buy page: 36, 48, 64, 96, 128 and 256 GB. M5 Max starts at 36 GB, M5 Ultra at 96 GB (<a class="sl" href="https://www.apple.com/shop/buy-mac/mac-studio" target="_blank" rel="noopener">Apple</a>).</div></div>
+      <div class="spec"><div class="k">Memory bandwidth</div><div class="v">460 GB/s–1.2 TB/s</div><div class="n">Min: M5 Max with the 32-core GPU, 460 GB/s. Max: M5 Ultra, 1.2 TB/s (<a class="sl" href="https://www.apple.com/mac-studio/specs/" target="_blank" rel="noopener">Apple specifications</a>); <a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a> also states 1.2 TB/s.</div></div>
+      <div class="spec"><div class="k">Power draw</div><div class="v">About 75–480 W</div><div class="n">Min: about 75 W average in a video transcode, for both the Max and Ultra (<a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a>). Max: 480 W maximum continuous power (<a class="sl" href="https://www.apple.com/mac-studio/specs/" target="_blank" rel="noopener">Apple specifications</a>).</div></div>
+      <div class="spec"><div class="k">Noise</div><div class="v">Quiet to audible</div><div class="n">"Quiet fans" (<a class="sl" href="https://www.digitalcameraworld.com/tech/computers/apple-mac-studio-m5-max-review" target="_blank" rel="noopener">Digital Camera World</a>). <a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a>: the fan can make itself known. <a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a>: fans can spin up quite loudly.</div></div>
+      <div class="spec"><div class="k">Price per GB of memory</div><div class="v">$57.28 / GB</div><div class="n">Computed: $5,499 ÷ 96 GB, M5 Ultra base model (price as of 26 Oct 2026, <a class="sl" href="https://www.apple.com/shop/buy-mac/mac-studio" target="_blank" rel="noopener">Apple</a>). The M5 Max base model: $69.42 / GB ($2,499 ÷ 36 GB).</div></div>
+      <div class="spec"><div class="k">Form factor</div><div class="v">Compact desktop</div><div class="n">197 × 197 × 95 mm; 2.7 kg (M5 Max), 3.6 kg (M5 Ultra) (<a class="sl" href="https://www.apple.com/mac-studio/specs/" target="_blank" rel="noopener">Apple specifications</a>).</div></div>
+      <div class="spec"><div class="k">CPU temperature</div><div class="v">78.29 °C average</div><div class="n"><a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a> measured the M5 Ultra CPU average in its stress test.</div></div>
+    </div>
+    <h3 style="margin:22px 0 0;font-size:16px">Tokens per second (generation, one user), min–max across sources</h3>
+    <p class="lead" style="margin:4px 0 0;font-size:13.5px">Engines, quantization and software versions differ between sources, so ranges are wide.</p>
+    <p class="lead" style="margin:4px 0 0;font-size:13.5px">Figures as reported by each linked source; checked against the sources on 26 Oct 2026.</p>
+    <table>
+      <thead><tr><th>Model class</th><th>Tokens/sec</th><th>Lowest reported by</th><th>Highest reported by</th></tr></thead>
+      <tbody>
+        <tr><td>~27B dense (Qwen3.8 27B), M5 Ultra</td><td class="num">24.3–50+</td><td class="by"><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a> (writing after 256K tokens of context)</td><td class="by"><a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a> ("just over 50")</td></tr>
+        <tr><td>~27B dense (Qwen3.8 27B), M5 Max</td><td class="num">~31</td><td class="by"><a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a> (LM Studio)</td><td class="by"><a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a> (same test)</td></tr>
+        <tr><td>Qwen3.8 Flash-Next, M5 Ultra 256 GB</td><td class="num">60.6–108</td><td class="by"><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a> (writing after 128K tokens of context)</td><td class="by"><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a> (16K prompt, oMLX)</td></tr>
+        <tr><td>GLM-5.3-Flash, M5 Ultra 256 GB</td><td class="num">41</td><td class="by"><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a> (16K prompt, reasoning tokens included)</td><td class="by"><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a> (same test)</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin:22px 0 0;font-size:16px">Prompt processing against other machines</h3>
+    <p class="lead" style="margin:4px 0 0;font-size:13.5px">Each row is one source's own test; models and settings differ between rows.</p>
+    <table>
+      <thead><tr><th>Prompt processing test</th><th>Apple M5 Ultra</th><th>Comparison machine</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Qwen3.8 Flash-Next, 16K prompt, tokens read per second</td><td class="num">2,887</td><td class="num">1,143 (M3 Ultra)</td><td class="by"><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a></td></tr>
+        <tr><td>Qwen3.8 Flash-Next, 64K prompt, tokens read per second</td><td class="num">2,732</td><td class="num">1,114 (M3 Ultra)</td><td class="by"><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a></td></tr>
+        <tr><td>Qwen3.8 27B, 6K prompt, tokens read per second</td><td class="num">1,701</td><td class="num">3,031 (RTX 5090 PC)</td><td class="by"><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a></td></tr>
+        <tr><td>Qwen3.8 27B, writing after 256K tokens, tokens/sec</td><td class="num">24.3</td><td class="num">30.0 (RTX 5090 PC)</td><td class="by"><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Noise, power and heat</h2>
+    <p class="lead">Measured or heard by the sources, with the source named.</p>
+    <ul class="sv">
+          <li><b>Fans:</b> "Quiet fans" (<a class="sl" href="https://www.digitalcameraworld.com/tech/computers/apple-mac-studio-m5-max-review" target="_blank" rel="noopener">Digital Camera World</a>). <a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a> found it "appreciably quieter" than an RTX 5090 PC. <a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a>: the fans can spin up quite loudly.</li>
+          <li><b>Heat:</b> <a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a> lists "Can get very hot". <a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a> measured an average CPU temperature of 78.29 °C in its stress test.</li>
+          <li><b>Power:</b> About 75 W on average in a video transcode (<a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a>). Apple states 480 W maximum continuous power (<a class="sl" href="https://www.apple.com/mac-studio/specs/" target="_blank" rel="noopener">Apple specifications</a>).</li>
+    </ul>
+  </section>
+  <section class="card">
+    <h2>Who it is for</h2>
+    <p class="lead">What reviewers say about the buyer.</p>
+    <ul class="sv">
+          <li><b>Suits:</b> Local AI agents: "a dream machine for local AI agents" (<a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a>).</li>
+          <li><b>Suits:</b> Local coding models and other local ML work (<a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a>).</li>
+          <li><b>Suits:</b> Photographers and video shooters who also run AI tools (<a class="sl" href="https://www.digitalcameraworld.com/tech/computers/apple-mac-studio-m5-max-review" target="_blank" rel="noopener">Digital Camera World</a>).</li>
+          <li><b>Less suited:</b> Buyers on a budget: <a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a> lists "There are cheaper AI boxes out there"; <a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a> calls it a "Niche product for a small audience".</li>
+    </ul>
+  </section>
+  <section class="card">
+    <h2>Where reviews disagree</h2>
+    <p class="lead">Differences between sources, side by side.</p>
+    <ul class="sv">
+          <li><b>AI strength:</b> <a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a> (M5 Ultra) calls it a dream machine for local agents. <a class="sl" href="https://www.digitalcameraworld.com/tech/computers/apple-mac-studio-m5-max-review" target="_blank" rel="noopener">Digital Camera World</a> (M5 Max) says it is less powerful than a GeForce 5070Ti desktop card in AI benchmarks.</li>
+          <li><b>Speed against NVIDIA:</b> <a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a> found prompt processing faster than the DGX Spark. <a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a> measured an RTX 5090 PC reading prompts faster: 3,031 against 1,701 tokens/sec.</li>
+          <li><b>Heat:</b> <a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a>: "Can get very hot". <a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a>: warm to the touch.</li>
+    </ul>
+  </section>
+  <section class="card">
+    <h2>Alternatives</h2>
+    <p class="lead">Other products with their own pages on this site.</p>
+    <ul class="sv">
+          <li><b>NVIDIA DGX Spark:</b> 128 GB of unified memory and CUDA software. See the <a href="dgx-spark.html">NVIDIA DGX Spark page</a>.</li>
+          <li><b>AMD Ryzen AI Halo:</b> A Windows or Linux mini PC with 128 GB of memory. See the <a href="amd-ryzen-ai-halo.html">AMD Ryzen AI Halo page</a>.</li>
+          <li><b>NVIDIA DGX Station:</b> A desk-side workstation with 748 GB of memory. See the <a href="nvidia-dgx-station.html">NVIDIA DGX Station page</a>.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="configurations">
+    <h2>Configurations, price and availability</h2>
+    <p class="lead">Prices and stock as of <time datetime="2026-10-26">26 Oct 2026</time>, each linked to the seller.</p>
+    <table>
+      <thead><tr><th>Configuration</th><th>Vendor-stated specs</th><th>Price</th><th>Independent reviews</th></tr></thead>
+      <tbody>
+        <tr><td>M5 Max · 18-core CPU, 32-core GPU · 36 GB / 512 GB SSD</td><td class="by">M5 Max, 460 GB/s memory bandwidth, 16-core Neural Engine, 10Gb Ethernet, Thunderbolt 5 (<a class="sl" href="https://www.apple.com/mac-studio/specs/" target="_blank" rel="noopener">Apple specifications</a>, <a class="sl" href="https://www.apple.com/shop/buy-mac/mac-studio" target="_blank" rel="noopener">Apple</a>)</td><td class="num">$2,499<br><span style="font-size:12px;font-weight:400">as of 26 Oct 2026</span></td><td class="by">&mdash;</td></tr>
+        <tr><td>M5 Ultra · 30-core CPU, 64-core GPU · 96 GB / 1 TB</td><td class="by">M5 Ultra, 1.2 TB/s memory bandwidth, 32-core Neural Engine, 10Gb Ethernet, Thunderbolt 5 (<a class="sl" href="https://www.apple.com/mac-studio/specs/" target="_blank" rel="noopener">Apple specifications</a>, <a class="sl" href="https://www.apple.com/shop/buy-mac/mac-studio" target="_blank" rel="noopener">Apple</a>)</td><td class="num">$5,499<br><span style="font-size:12px;font-weight:400">as of 26 Oct 2026</span></td><td class="by">&mdash;</td></tr>
+        <tr><td>M5 Ultra · 36-core CPU, 80-core GPU · 96 GB / 1 TB</td><td class="by">M5 Ultra with the larger GPU, 1.2 TB/s memory bandwidth (<a class="sl" href="https://www.apple.com/mac-studio/specs/" target="_blank" rel="noopener">Apple specifications</a>, <a class="sl" href="https://www.apple.com/shop/buy-mac/mac-studio" target="_blank" rel="noopener">Apple</a>)</td><td class="num">$6,799<br><span style="font-size:12px;font-weight:400">as of 26 Oct 2026</span></td><td class="by">&mdash;</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card" id="models">
+    <h2>Compatible models</h2>
+    <p class="lead">Popular local AI models that a linked source reports running on the Apple Mac Studio.</p>
+    <div class="fams"><div class="fam"><h3>Qwen</h3><div class="mi top"><span class="mn">Qwen3.8 Flash-Next<span class="srcn">Source: <a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a></span></span><span class="ok" aria-label="Compatible"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div><details class="more"><summary>Show 3 more</summary><div class="mi"><span class="mn">Qwen3.8 27B<span class="srcn">Source: <a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a></span></span><span class="ok" aria-label="Compatible"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div><div class="mi"><span class="mn">Qwen 3.5 122B<span class="srcn">Source: <a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a></span></span><span class="ok" aria-label="Compatible"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div><div class="mi"><span class="mn">Qwen 3.5 9B<span class="srcn">Source: <a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a></span></span><span class="ok" aria-label="Compatible"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div></details></div><div class="fam"><h3>GLM</h3><div class="mi top"><span class="mn">GLM-5.3-Flash<span class="srcn">Source: <a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a></span></span><span class="ok" aria-label="Compatible"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div></div></div>
+  </section>
+
+  <section class="card">
+    <h2>What each source says</h2>
+    <p class="lead">Every judgment is labeled by its source, so you can form your own view.</p>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">All sources (5)</button>
+      <button data-f="pos">Positive (4)</button>
+      <button data-f="mix">Mixed (1)</button>
+      <button data-f="neg">Negative (0)</button>
+    </div>
+    <div class="sources" id="sources">
+
+      <div class="source" data-t="pos"><div><div class="name"><a class="sl" href="https://www.wired.com/review/apple-mac-studio-m5-ultra-2026/" target="_blank" rel="noopener">WIRED</a></div><span class="type">Review site</span><span class="flag">⚑ Review unit sent by Apple</span><span class="art">Review: "Apple Mac Studio (M5 Ultra) Review: Unlimited Power"</span></div>
+        <div><p class="quote">Frontier-level AI models right on your desk.</p><p class="gist">Scores it 9/10 with an M5 Ultra and 256 GB; likes the small size and ports, notes it can get very hot and that cheaper AI boxes exist.</p></div><span class="tone pos">Positive</span></div>
+      <div class="source" data-t="pos"><div><div class="name"><a class="sl" href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/" target="_blank" rel="noopener">MacStories</a></div><span class="type">Review site</span><span class="flag">⚑ Apple sent the M5 Ultra review unit</span><span class="art">Review: "M5 Ultra Mac Studio Review: The Dream Mac for Local AI Agents"</span></div>
+        <div><p class="quote">…the M5 Ultra Mac Studio is a dream machine for local AI agents.</p><p class="gist">Measures much faster prompt reading than the M3 Ultra and prefers it to an RTX 5090 PC for size, heat and noise, while the 5090 keeps an edge in speed.</p></div><span class="tone pos">Positive</span></div>
+      <div class="source" data-t="pos"><div><div class="name"><a class="sl" href="https://www.tomshardware.com/desktops/mini-pcs/apple-mac-studio-m5-ultra-review" target="_blank" rel="noopener">Tom's Hardware</a></div><span class="type">Review site</span><span class="flag">⚑ M5 Ultra sample supplied</span><span class="art">Review: "Apple Mac Studio (M5 Ultra) review: Local model citizen outpaces DGX Spark and Threadripper"</span></div>
+        <div><p class="quote">…a small powerhouse PC with strong performance, fast memory throughput, and the ability to run AI models locally.</p><p class="gist">Finds prompt processing faster than the DGX Spark; criticizes pricey memory and SSD upgrades that cannot be changed later.</p></div><span class="tone pos">Positive</span></div>
+      <div class="source" data-t="mix"><div><div class="name"><a class="sl" href="https://arstechnica.com/gadgets/2026/09/review-apples-hyper-pricey-m5-ultra-mac-studio-made-me-into-a-vibe-coder/" target="_blank" rel="noopener">Ars Technica</a></div><span class="type">Review site</span><span class="art">Review: "Apple's hyper-pricey M5 Ultra Mac Studio made me into a vibe coder"</span></div>
+        <div><p class="quote">Nearly ideal machines for usably fast, power-efficient local ML and AI workloads, including competent coding models.</p><p class="gist">Measures just over 50 tokens/sec on a 27B model; asks how much anyone would pay for it and calls it a niche product.</p></div><span class="tone mix">Mixed</span></div>
+      <div class="source" data-t="pos"><div><div class="name"><a class="sl" href="https://www.digitalcameraworld.com/tech/computers/apple-mac-studio-m5-max-review" target="_blank" rel="noopener">Digital Camera World</a></div><span class="type">Review site</span><span class="flag">⚑ Review unit sent to the site</span><span class="art">Review: "Apple Mac Studio (M5 Max) review: huge power in a small space"</span></div>
+        <div><p class="quote">…it's very much a dream machine for photographers and video shooters.</p><p class="gist">Photo and video review of the M5 Max; says it is less powerful than a GeForce 5070Ti desktop card in AI benchmarks.</p></div><span class="tone pos">Positive</span></div>
+
+    </div>
+    <div class="fine" style="text-align:left;margin-top:12px">Flags mark supplied-unit or commissioned context; flagged cards are still counted.</div>
+  </section>
+
+  <footer>
+    <div class="links"><a href="methodology.html">How we summarize reviews</a><a href="about.html">About</a></div>
+    <div>LocalAI Hardware summarizes what published reviews say. We don't score products.</div>
+  </footer>
+</main>
+
+<script>
+document.getElementById('filters').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  this.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+  var f=b.dataset.f;
+  document.querySelectorAll('#sources .source').forEach(function(s){s.style.display=(f==='all'||s.dataset.t===f)?'':'none'});
+});
+</script>
+</body>
+</html>
