@@ -3,7 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NVIDIA DGX Spark – LocalAI Hardware (design mockup)</title>
+<title>NVIDIA DGX Spark: what reviewers say — LocalAI Hardware</title>
+<meta name="description" content="What Tom&#x27;s Hardware, The Register, ServeTheHome and others say about the NVIDIA DGX Spark: praise, flaws and local-AI speed figures, each linked to its source.">
+<link rel="canonical" href="https://albertocabasvidani.github.io/localaihardware/dgx-spark.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="LocalAI Hardware">
+<meta property="og:title" content="NVIDIA DGX Spark: what reviewers say — LocalAI Hardware">
+<meta property="og:description" content="Praise, flaws and local-AI speed figures from published reviews, each linked to its source.">
+<meta property="og:url" content="https://albertocabasvidani.github.io/localaihardware/dgx-spark.html">
+<meta property="og:image" content="https://albertocabasvidani.github.io/localaihardware/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -34,7 +46,6 @@ header.top .wrap{display:flex;align-items:center;gap:24px;height:60px}
 nav{display:flex;gap:20px;font-size:14px;margin-left:auto}
 nav a{color:var(--muted)} nav a:hover{color:var(--ink);text-decoration:none}
 .crumbs{font-size:13px;color:var(--muted);padding:16px 0 4px}
-.mock-note{display:inline-block;font-size:11px;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:999px;padding:2px 10px;margin-left:8px;vertical-align:middle}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
 .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.09em;font-weight:700;color:var(--muted)}
 h1,h2,h3{color:var(--ink)}
@@ -108,14 +119,8 @@ td.by{color:var(--muted);font-size:13px}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .filters button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:5px 14px;cursor:pointer;color:var(--muted)}
 .filters button.on{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-line)}
-.cmp{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.cmp .c{display:block;border:1px solid var(--line);border-radius:10px;padding:18px;background:var(--surface);color:var(--ink)}
-.cmp .c:hover{border-color:var(--accent-line);text-decoration:none}
-.cmp .t{font-weight:700;font-size:17px}
-.cmp .s{font-size:14px;color:var(--muted);margin-top:4px}
-.cmp .go{color:var(--accent);font-weight:600;font-size:14px;margin-top:8px;display:block}
 @media (max-width:860px){
-  .hero,.grid2,.cmp{grid-template-columns:1fr}
+  .hero,.grid2{grid-template-columns:1fr}
   .specs{grid-template-columns:1fr 1fr}
   .source{grid-template-columns:1fr}
   .hero h1{font-size:28px}
@@ -137,27 +142,32 @@ details.more summary::before{content:"+";display:inline-block;width:16px;font-we
 details.more[open] summary::before{content:"\2212"}
 details.more[open] summary{border-bottom:1px solid var(--line-soft)}
 @media (max-width:860px){.fams{grid-template-columns:1fr}}
+.mi .srcn{display:block;font-weight:400;font-size:12px;color:var(--muted);margin-top:2px}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://albertocabasvidani.github.io/localaihardware/"},{"@type":"ListItem","position":2,"name":"NVIDIA DGX Spark","item":"https://albertocabasvidani.github.io/localaihardware/dgx-spark.html"}]}
+</script>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="index.html">LocalAI <span>Hardware</span></a>
+    <a class="logo" href="./">LocalAI <span>Hardware</span></a>
     <nav>
-      <a href="#">AI PCs</a><a href="#">Workstations</a><a href="#">Mini PCs</a><a href="#">Compare</a><a href="#">How we summarize</a>
+      <a href="about.html">About</a><a href="methodology.html">How we summarize</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="crumbs"><a href="index.html">Home</a> › AI PCs › Desktop AI systems › NVIDIA DGX Spark</div>
+  <div class="crumbs"><a href="./">Home</a> › NVIDIA DGX Spark</div>
 
   <div class="hero">
     <div class="card">
       <div class="eyebrow">Product page · what reviewers say</div>
       <h1>NVIDIA DGX Spark</h1>
-      <p class="sub">Compact desktop AI computer built around the GB10 Grace Blackwell chip, for running and developing local models.</p>
+      <p class="sub">NVIDIA DGX Spark is a compact desktop AI computer built around the GB10 Grace Blackwell chip, for running and developing local models.</p>
+      <p class="fine" style="text-align:left">Last updated <time datetime="2026-10-26">26 Oct 2026</time>.<br>What changed: 64 GB variant added; 128 GB price re-checked.</p>
 
       <div class="labels" aria-label="Best for">
         <span class="label">Best for fitting large models in 128 GB</span>
@@ -198,10 +208,10 @@ details.more[open] summary{border-bottom:1px solid var(--line-soft)}
         <span style="font-size:12px">Per NVIDIA marketplace listing</span>
       </div>
       <div class="eyebrow">Price</div>
-      <div class="price">$6,950<small>128 GB / 4 TB Founders Edition · NVIDIA marketplace</small></div>
+      <div class="price">$6,950<small>128 GB / 4 TB Founders Edition · <a class="sl" href="https://marketplace.nvidia.com/en-us/enterprise/personal-ai-supercomputers/dgx-spark/" target="_blank" rel="noopener">NVIDIA marketplace</a>, as of 26 Oct 2026</small></div>
       <a class="btn" href="https://marketplace.nvidia.com/en-us/enterprise/personal-ai-supercomputers/dgx-spark/" rel="noopener">Buy from NVIDIA</a>
-      <div class="fine">We may earn a commission if you buy through this link. <a href="#">Affiliate transparency</a></div>
-      <div class="fine">Prices quoted in reviews below are the prices when each review was written.</div>
+      <div class="fine">Launch price was $3,999 (Oct 2025, <a class="sl" href="https://www.theregister.com/software/2025/10/14/dgx-spark-nvidias-desktop-supercomputer-first-look/346895" target="_blank" rel="noopener">The Register</a>).<br>Prices quoted in reviews below are the prices when each review was written.</div>
+      <div class="fine">Sources last verified: 26 Oct 2026.</div>
     </aside>
   </div>
 
@@ -258,18 +268,19 @@ details.more[open] summary{border-bottom:1px solid var(--line-soft)}
     <h2>Local AI facts</h2>
     <div class="meth">
       <span class="badge">Methodology v0.1</span>
-      <span class="lead" style="margin:0">Figures as reported by the sources, shown as min–max ranges with the source behind each end. Not a score. <a href="#">How we summarize reviews</a></span>
+      <span class="lead" style="margin:0">Figures as reported by the sources, shown as min–max ranges with the source behind each end. Not a score. <a href="methodology.html">How we summarize reviews</a></span>
     </div>
     <div class="specs">
       <div class="spec"><div class="k">Memory</div><div class="v">112–128 GB</div><div class="n">Min: 112 GB available to the OS (<a class="sl" href="https://simonwillison.net/2025/Oct/14/nvidia-dgx-spark/" target="_blank" rel="noopener">Simon Willison</a>, on-device report). Max: 128 GB unified (<a class="sl" href="https://www.tomshardware.com/pc-components/gpus/nvidia-dgx-spark-review" target="_blank" rel="noopener">Tom's Hardware</a>, <a class="sl" href="https://lmsys.org/blog/2025-10-13-nvidia-dgx-spark/" target="_blank" rel="noopener">LMSYS</a>).</div></div>
       <div class="spec"><div class="k">Memory bandwidth</div><div class="v">273 GB/s</div><div class="n">Stated by <a class="sl" href="https://www.servethehome.com/nvidia-dgx-spark-review-the-gb10-machine-is-so-freaking-cool/" target="_blank" rel="noopener">ServeTheHome</a>, <a class="sl" href="https://lmsys.org/blog/2025-10-13-nvidia-dgx-spark/" target="_blank" rel="noopener">LMSYS</a> and <a class="sl" href="https://www.theregister.com/software/2025/10/14/dgx-spark-nvidias-desktop-supercomputer-first-look/346895" target="_blank" rel="noopener">The Register</a>. <a class="sl" href="https://www.youtube.com/watch?v=md6a4ENM9pg" target="_blank" rel="noopener">Digital Spaceport</a> says "about 276" in the video.</div></div>
-      <div class="spec"><div class="k">Power draw</div><div class="v">60–200 W</div><div class="n">Min: 60 W, low end of the 60–90 W <a class="sl" href="https://www.servethehome.com/nvidia-dgx-spark-review-the-gb10-machine-is-so-freaking-cool/" target="_blank" rel="noopener">ServeTheHome</a> saw in LLM inference. Max: just under 200 W with CPU and GPU loaded (<a class="sl" href="https://www.servethehome.com/nvidia-dgx-spark-review-the-gb10-machine-is-so-freaking-cool/" target="_blank" rel="noopener">ServeTheHome</a>). Included adapter: 240 W.</div></div>
+      <div class="spec"><div class="k">Power draw</div><div class="v">60–200 W</div><div class="n">Min: 60 W, low end of the 60–90 W <a class="sl" href="https://www.servethehome.com/nvidia-dgx-spark-review-the-gb10-machine-is-so-freaking-cool/" target="_blank" rel="noopener">ServeTheHome</a> saw in LLM inference. Max: just under 200 W with CPU and GPU loaded (<a class="sl" href="https://www.servethehome.com/nvidia-dgx-spark-review-the-gb10-machine-is-so-freaking-cool/" target="_blank" rel="noopener">ServeTheHome</a>). Power supply: 240 W (per <a class="sl" href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener">NVIDIA specifications</a>).</div></div>
       <div class="spec"><div class="k">Noise</div><div class="v">Under 40 dBA</div><div class="n"><a class="sl" href="https://www.servethehome.com/nvidia-dgx-spark-review-the-gb10-machine-is-so-freaking-cool/" target="_blank" rel="noopener">ServeTheHome</a>, outside stress tests. "Quiet" per <a class="sl" href="https://hothardware.com/reviews/nvidia-dgx-spark-hands-on" target="_blank" rel="noopener">HotHardware</a> and <a class="sl" href="https://www.storagereview.com/review/nvidia-dgx-spark-review-the-ai-appliance-bringing-datacenter-capabilities-to-desktops" target="_blank" rel="noopener">StorageReview</a>. <a class="sl" href="https://www.youtube.com/watch?v=FYL9e_aqZY0" target="_blank" rel="noopener">NetworkChuck</a> heard fans under heavy load. <a class="sl" href="https://www.tomshardware.com/pc-components/gpus/nvidia-dgx-spark-review" target="_blank" rel="noopener">Tom's Hardware</a> measured a peak of 37.5 dBA at 18" under extended image generation (noise floor 33 dBA); <a class="sl" href="https://hothardware.com/reviews/nvidia-dgx-spark-hands-on" target="_blank" rel="noopener">HotHardware</a> measured about 40 dB at 2 inches from the vent.</div></div>
-      <div class="spec"><div class="k">Price per GB of memory</div><div class="v">$54.30 / GB</div><div class="n">Computed: $6,950 ÷ 128 GB for the single configuration shown.</div></div>
+      <div class="spec"><div class="k">Price per GB of memory</div><div class="v">$54.30 / GB</div><div class="n">Computed: $6,950 ÷ 128 GB, 128 GB model only (price as of 26 Oct 2026).</div></div>
       <div class="spec"><div class="k">Form factor</div><div class="v">Mini desktop</div><div class="n">150 × 150 × 50.5 mm (<a class="sl" href="https://marketplace.nvidia.com/en-us/enterprise/personal-ai-supercomputers/dgx-spark/" target="_blank" rel="noopener">NVIDIA listing</a>); about 1.2 kg (<a class="sl" href="https://www.youtube.com/watch?v=zs-J9sKxvoM" target="_blank" rel="noopener">Tim Carambat</a>).</div></div>
     </div>
     <h3 style="margin:22px 0 0;font-size:16px">Tokens per second (generation, one user), min–max across sources</h3>
     <p class="lead" style="margin:4px 0 0;font-size:13.5px">Engines, quantization and software versions differ between sources, so ranges are wide.</p>
+    <p class="lead" style="margin:4px 0 0;font-size:13.5px">Figures as reported by each linked source; checked against the sources on 26 Oct 2026.</p>
     <table>
       <thead><tr><th>Model class</th><th>Tokens/sec</th><th>Lowest reported by</th><th>Highest reported by</th></tr></thead>
       <tbody>
@@ -283,10 +294,21 @@ details.more[open] summary{border-bottom:1px solid var(--line-soft)}
     </table>
   </section>
 
+  <section class="card" id="configurations">
+    <h2>Configurations</h2>
+    <table>
+      <thead><tr><th>Configuration</th><th>Vendor-stated specs</th><th>Price</th><th>Independent reviews</th></tr></thead>
+      <tbody>
+        <tr><td>128 GB / 4 TB Founders Edition</td><td class="by">GB10, 128 GB unified memory, 4 TB NVMe, ConnectX-7 (<a class="sl" href="https://marketplace.nvidia.com/en-us/enterprise/personal-ai-supercomputers/dgx-spark/" target="_blank" rel="noopener">NVIDIA listing</a>)</td><td class="num">$6,950</td><td class="by">The 14 source cards below. Price as of 26 Oct 2026 (<a class="sl" href="https://marketplace.nvidia.com/en-us/enterprise/personal-ai-supercomputers/dgx-spark/" target="_blank" rel="noopener">NVIDIA marketplace</a>).</td></tr>
+        <tr><td>64 GB (OEM partners)</td><td class="by">GB10, 64 GB unified memory, ConnectX-7, memory bandwidth 273 GB/s, up to 4 TB NVMe.<br>Offered by Acer, ASUS, Dell, Gigabyte, HP and MSI, per NVIDIA.<br>(<a class="sl" href="https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/" target="_blank" rel="noopener">NVIDIA blog</a>, <a class="sl" href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener">NVIDIA product page</a>)</td><td class="num">$4,999<br><span style="font-size:12px;font-weight:400">starting price per NVIDIA</span></td><td class="by">&mdash;</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <section class="card" id="models">
     <h2>Compatible models</h2>
-    <p class="lead">Popular local AI models, by family.</p>
-    <div class="fams"><div class="fam"><h3>Qwen</h3><div class="mi top"><span class="mn">Qwen3.8 27B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div></div><div class="fam"><h3>Gemma 4</h3><div class="mi top"><span class="mn">Gemma 4 26B-A4B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div><details class="more"><summary>Show 2 more</summary><div class="mi"><span class="mn">Gemma 4 31B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div><div class="mi"><span class="mn">Gemma 4 12B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div></details></div><div class="fam"><h3>gpt-oss</h3><div class="mi top"><span class="mn">gpt-oss 120B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div><details class="more"><summary>Show 1 more</summary><div class="mi"><span class="mn">gpt-oss 20B</span><span class="ok" aria-label="Compatible"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div></details></div></div>
+    <p class="lead">Popular local AI models that a linked source reports running on the DGX Spark.</p>
+    <div class="fams"><div class="fam"><h3>Qwen</h3><div class="mi top"><span class="mn">Qwen3.8 27B<span class="srcn">Source: <a class="sl" href="https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/" target="_blank" rel="noopener">NVIDIA blog</a></span></span><span class="ok" aria-label="Compatible"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div></div><div class="fam"><h3>Gemma 4</h3><div class="mi top"><span class="mn">Gemma 4 26B-A4B<span class="srcn">Source: <a class="sl" href="https://ai-muninn.com/en/blog/dgx-spark-gemma4-31b-dense-7-toks" target="_blank" rel="noopener">ai-muninn blog</a></span></span><span class="ok" aria-label="Compatible"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div><details class="more"><summary>Show 1 more</summary><div class="mi"><span class="mn">Gemma 4 31B<span class="srcn">Source: <a class="sl" href="https://ai-muninn.com/en/blog/dgx-spark-gemma4-31b-dense-7-toks" target="_blank" rel="noopener">ai-muninn blog</a></span></span><span class="ok" aria-label="Compatible"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div></details></div><div class="fam"><h3>gpt-oss</h3><div class="mi top"><span class="mn">gpt-oss 120B<span class="srcn">Source: <a class="sl" href="https://ollama.com/blog/nvidia-spark-performance" target="_blank" rel="noopener">Ollama blog</a></span></span><span class="ok" aria-label="Compatible"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div><details class="more"><summary>Show 1 more</summary><div class="mi"><span class="mn">gpt-oss 20B<span class="srcn">Source: <a class="sl" href="https://ollama.com/blog/nvidia-spark-performance" target="_blank" rel="noopener">Ollama blog</a></span></span><span class="ok" aria-label="Compatible"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Compatible</span></div></details></div></div>
   </section>
 
   <section class="card">
@@ -306,10 +328,10 @@ details.more[open] summary{border-bottom:1px solid var(--line-soft)}
       <div class="source" data-t="pos"><div><div class="name"><a class="sl" href="https://www.servethehome.com/nvidia-dgx-spark-review-the-gb10-machine-is-so-freaking-cool/" target="_blank" rel="noopener">ServeTheHome</a></div><span class="type">Review site</span><span class="flag">⚑ NVIDIA-supplied pre-production unit</span><span class="art">Review: "The GB10 Machine is so Freaking Cool"</span></div>
         <div><p class="quote">It is, however, impossible for me to get past the feeling that this is a game-changer.</p><p class="gist">Likes the 128 GB memory, 200GbE networking and a quiet chassis, while saying it is not "the most mature NVIDIA platform" in its pre-release state.</p></div><span class="tone pos">Positive</span></div>
 
-      <div class="source" data-t="mix"><div><div class="name"><a class="sl" href="https://www.theregister.com/software/2025/10/14/dgx-spark-nvidias-desktop-supercomputer-first-look/346895" target="_blank" rel="noopener">The Register</a></div><span class="type">Review site</span><span class="art">First look: "Nvidia's tiniest supercomputer, tackles large models at solid speeds"</span></div>
+      <div class="source" data-t="mix"><div><div class="name"><a class="sl" href="https://www.theregister.com/software/2025/10/14/dgx-spark-nvidias-desktop-supercomputer-first-look/346895" target="_blank" rel="noopener">The Register (first look)</a></div><span class="type">Review site</span><span class="art">First look: "Nvidia's tiniest supercomputer, tackles large models at solid speeds"</span></div>
         <div><p class="quote">…a system that may not be the fastest at any one thing, but can run them all.</p><p class="gist">Capacity and CUDA compatibility are strengths; bandwidth limits generation speed, and many buyers "would have happily forgone the high-speed networking in favor of a lower MSRP".</p></div><span class="tone mix">Mixed</span></div>
 
-      <div class="source" data-t="mix"><div><div class="name"><a class="sl" href="https://www.theregister.com/on-prem/2025/12/25/tested-amds-strix-halo-vs-nvidias-dgx-spark/2098514" target="_blank" rel="noopener">The Register</a></div><span class="type">Review site</span><span class="art">Comparison: "Tested: AMD's Strix Halo vs Nvidia's DGX Spark"</span></div>
+      <div class="source" data-t="mix"><div><div class="name"><a class="sl" href="https://www.theregister.com/on-prem/2025/12/25/tested-amds-strix-halo-vs-nvidias-dgx-spark/2098514" target="_blank" rel="noopener">The Register (Strix Halo comparison)</a></div><span class="type">Review site</span><span class="art">Comparison: "Tested: AMD's Strix Halo vs Nvidia's DGX Spark"</span></div>
         <div><p class="quote">For between two-thirds and half the price, you could get a Strix Halo box that churns out tokens just as quickly.</p><p class="gist">The Spark's GPU is roughly 2–3× faster to first token and better for image and video work, for those who want an AI appliance for prototyping agents, fine-tuning models or generating text, image and video, it is "probably the better choice, assuming you can stomach the asking price".</p></div><span class="tone mix">Mixed</span></div>
 
       <div class="source" data-t="pos"><div><div class="name"><a class="sl" href="https://hothardware.com/reviews/nvidia-dgx-spark-hands-on" target="_blank" rel="noopener">HotHardware</a></div><span class="type">Review site</span><span class="art">Review: "A GB10-Infused Mini AI Development Powerhouse"</span></div>
@@ -327,10 +349,10 @@ details.more[open] summary{border-bottom:1px solid var(--line-soft)}
       <div class="source" data-t="pos"><div><div class="name"><a class="sl" href="https://www.youtube.com/watch?v=Lqd2EuJwOuw" target="_blank" rel="noopener">Level1Techs</a></div><span class="type">YouTube</span><span class="flag">⚑ NVIDIA provided the unit ahead of time</span><span class="art">Video: "Deep Dive into Nvidia's DGX Spark GB10"</span></div>
         <div><p class="quote">Spark's charm is less its peak performance and more an AI lab in a box.</p><p class="gist">Positive on the turnkey dev environment and the path to bigger systems ("cheaper than a forgotten cloud instance"); measured network speeds below 200 Gb/s and notes a 5070 would be faster but runs out of VRAM sooner.</p></div><span class="tone pos">Positive</span></div>
 
-      <div class="source" data-t="pos"><div><div class="name"><a class="sl" href="https://www.youtube.com/watch?v=82SyOtc9flA" target="_blank" rel="noopener">Alex Ziskind</a></div><span class="type">YouTube</span><span class="flag">⚑ Sponsored by Micro Center</span><span class="art">Video: "DGX Spark... First Mini PC That Feels Like a Data Center"</span></div>
+      <div class="source" data-t="pos"><div><div class="name"><a class="sl" href="https://www.youtube.com/watch?v=82SyOtc9flA" target="_blank" rel="noopener">Alex Ziskind (data-center video)</a></div><span class="type">YouTube</span><span class="flag">⚑ Sponsored by Micro Center</span><span class="art">Video: "DGX Spark... First Mini PC That Feels Like a Data Center"</span></div>
         <div><p class="quote">I don't think it's ever been easier to just set up a dev box with AI workflows and get going with it.</p><p class="gist">Praises day-one software support (LM Studio, Ollama, ComfyUI) and FP4 speed; says Strix Halo software is "still catching up".</p></div><span class="tone pos">Positive</span></div>
 
-      <div class="source" data-t="pos"><div><div class="name"><a class="sl" href="https://www.youtube.com/watch?v=Ze5XLooTt6g" target="_blank" rel="noopener">Alex Ziskind</a></div><span class="type">YouTube</span><span class="art">Video: "I Thought DGX Spark Was Slower… Until I Changed ONE Thing"</span></div>
+      <div class="source" data-t="pos"><div><div class="name"><a class="sl" href="https://www.youtube.com/watch?v=Ze5XLooTt6g" target="_blank" rel="noopener">Alex Ziskind (speed video)</a></div><span class="type">YouTube</span><span class="art">Video: "I Thought DGX Spark Was Slower… Until I Changed ONE Thing"</span></div>
         <div><p class="quote">Single-user benchmarks will mislead you.</p><p class="gist">Finds throughput climbs strongly with concurrent requests and NVFP4, though in one configuration an M3 Ultra Mac Studio edged it out.</p></div><span class="tone pos">Positive</span></div>
 
       <div class="source" data-t="mix"><div><div class="name"><a class="sl" href="https://www.youtube.com/watch?v=FYL9e_aqZY0" target="_blank" rel="noopener">NetworkChuck</a></div><span class="type">YouTube</span><span class="flag">⚑ NVIDIA-supplied unit; video sponsored by Twingate</span><span class="art">Video: "This AI Supercomputer can fit on your desk..."</span></div>
@@ -346,18 +368,9 @@ details.more[open] summary{border-bottom:1px solid var(--line-soft)}
     <div class="fine" style="text-align:left;margin-top:12px">Flags mark early-access, sponsored or second-hand context; flagged cards are still counted. YouTube quotes come from auto-generated captions.</div>
   </section>
 
-  <section>
-    <h2>Compare with</h2>
-    <p class="lead">Side-by-side pages, each listing the sources behind the comparison.</p>
-    <div class="cmp">
-      <div class="c"><div class="t">NVIDIA DGX Spark vs Strix Halo mini PC</div><div class="s">Sources: <a class="sl" href="https://www.theregister.com/on-prem/2025/12/25/tested-amds-strix-halo-vs-nvidias-dgx-spark/2098514" target="_blank" rel="noopener">The Register</a> (Strix Halo vs Spark test), <a class="sl" href="https://www.tomshardware.com/pc-components/gpus/nvidia-dgx-spark-review" target="_blank" rel="noopener">Tom's Hardware</a>, <a class="sl" href="https://www.youtube.com/watch?v=82SyOtc9flA" target="_blank" rel="noopener">Alex Ziskind</a></div><span class="go">Open comparison →</span></div>
-      <div class="c"><div class="t">NVIDIA DGX Spark vs Mac Studio</div><div class="s">Sources: <a class="sl" href="https://hothardware.com/reviews/nvidia-dgx-spark-hands-on" target="_blank" rel="noopener">HotHardware</a>, <a class="sl" href="https://www.theregister.com/software/2025/10/14/dgx-spark-nvidias-desktop-supercomputer-first-look/346895" target="_blank" rel="noopener">The Register</a> (first look), <a class="sl" href="https://www.youtube.com/watch?v=Ze5XLooTt6g" target="_blank" rel="noopener">Alex Ziskind</a> (concurrency test)</div><span class="go">Open comparison →</span></div>
-    </div>
-  </section>
-
   <footer>
-    <div class="links"><a href="#">How we summarize reviews</a><a href="#">Affiliate transparency</a><a href="#">Source list</a><a href="#">About</a></div>
-    <div>LocalAI Hardware summarizes what published reviews say. We don't score products. <span class="mock-note">Design mockup</span></div>
+    <div class="links"><a href="methodology.html">How we summarize reviews</a><a href="about.html">About</a></div>
+    <div>LocalAI Hardware summarizes what published reviews say. We don't score products.</div>
   </footer>
 </main>
 
